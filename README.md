@@ -86,7 +86,7 @@ next方法返回当前元素，并指向下一个元素
 
 * **ConcretePrototype(具体的原型)**
 
-  ConcreteProtype角色负责实现现有实例来横撑新实例的方法
+  ConcretePrototype角色负责实现现有实例来横撑新实例的方法
 
 * **Client(使用者)**
 
@@ -107,7 +107,91 @@ next方法返回当前元素，并指向下一个元素
   Director角色负责使用Builder角色的接口来生成实例。
 
 * **Client(使用者)**
+#### 桥接模式(Bridge)
 
-  
+将类的功能层次结构与实现层次结构分离
+
+> 希望新加功能时，我们会继承某个父类，在子类中增加某些方法，这就是为了增加新功能而产生的层次结构。
+>
+> 父类具有基本功能，子类中增加新的功能。
+>
+> 以上这种层次结构称为"类的功能层次结构"
+
+> 希望新增实现时，父类的人物是通过声明抽象方法的方式定义接口，而子类的任务是实现抽象方法。这种类的层次结构并非用于方便我们增加新的方法。它的真正作用是实现任务分担：父类通过声明抽象方法来定义接口，子类通过实现具体方法来实现接口。正式由于父类和子类的任务分组，我们才可以编写出具有高科替换性的类。这种层次结构被称为"类的实现层次结构"
+
+* **Abstraction(抽象化)  Display**
+
+  该角色位于"类的功能层次结构"的最上层，它使用Implementor角色的方法定义了基本的功能，该角色中保存了Implementor角色的实例。
+
+* **RefinedAbstraction(改善后的抽象化)  CountDisplay**
+
+  在Abstraction角色的基础上增加了新功能的角色
+
+* **Implementor(实现者) DisplayImpl**
+
+  该角色位于"类的实现层次结构"的最上层。
+
+* **ConcreteImplementor(具体实现者) StringDisplayImpl**
+
+  该角色负责实现在Implementor角色中定义的接口
+
+#### 策略模式(Strategy)
+
+其思想是针对一组算法，将每一种算法都封装到具有共同接口的独立的类中，从而是它们可以相互替换。策略模式的最大特点是使得算法可以在不影响客户端的情况下发生变化，从而改变不同的功能。
+
+* **Strategy(策略)**
+
+  Strategy角色负责决定实现策略所必须的接口
+
+* **ConcreteStrategy(具体的策略)**
+
+  ConcreteStrategy角色负责Strategy角色的接口，也就是负责实现具体的策略。
+
+* **Context(上下文)**
+
+  负责使用Strategy角色，Context角色保存了ConcreteStrategy角色的实力，并使用ConcreteStrategy角色去实现需求。
+
+####  组合模式(Composite)
+
+内容与容器的一致性(以计算机文件夹为例)
+
+* **Leaf(树叶)**
+
+  表示内容的角色，该角色中不能放入其他对象。由File类扮演此角色
+
+* **Composite(复合物)**
+
+  表示容器的角色，可以在其中放入Leaf角色和Composite角色，由Directory类扮演此角色
+
+* **Component**
+
+  使Leaf角色和Composite角色具有一致性的角色。Component角色是Leaf角色和Composite角色的父类。由Entry类扮演此角色
+
+* Client
+
+  使用Composite模式的角色。由Main类扮演此角色
+
+使用Composite模式可以使容易与内容具有一致性，也可以称其为**多个和单个的一致性**，即将多个对象结合在一起，当做一个对象进行处理。
+
+#### 装饰模式(Decorator)
+
+* **Componet**
+
+  增加功能时的核心角色。由DecoratorDisplay类扮演此角色
+
+* **ConcreteComponent**
+
+  该角色是实现了Component角色所定义的接口。由StringDisplay扮演此角色
+
+* **Decorator(装饰物)**
+
+  该角色具有与Component角色相同的接口。在它内部保存了被装饰对象--Component角色。Decorator角色知道自己要装饰的对象。由Border类扮演此角色
+
+* **ConcreteDecorator(具体装饰物)**
+
+  该角色是具体的Decorator角色。由SideBorder类和FullBorder类扮演。
+
+
+
 
 
