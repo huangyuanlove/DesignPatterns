@@ -191,7 +191,85 @@ next方法返回当前元素，并指向下一个元素
 
   该角色是具体的Decorator角色。由SideBorder类和FullBorder类扮演。
 
+#### 访问者模式(Visitor)
 
+* **Visitor（抽象访问者）**
 
+  抽象访问者为对象结构中每一个具体元素类ConcreteElement声明一个访问操作，从这个操作的名称或参数类型可以清楚知道需要访问的具体元素的类型，具体访问者则需要实现这些操作方法，定义对这些元素的访问操作。
 
+* **ConcreteVisitor（具体访问者）**
 
+  具体访问者实现了抽象访问者声明的方法，每一个操作作用于访问对象结构中一种类型的元素。
+
+* **Element（抽象元素）**
+
+  一般是一个抽象类或接口，定义一个Accept方法，该方法通常以一个抽象访问者作为参数。
+
+* **ConcreteElement（具体元素）**
+
+  具体元素实现了Accept方法，在Accept方法中调用访问者的访问方法以便完成一个元素的操作。
+
+* **ObjectStructure（对象结构）**
+
+  对象结构是一个元素的集合，用于存放元素对象，且提供便利其内部元素的方法。
+
+#### 责任链模式(Chan of Responsibility)
+
+将多个对象组成一条责任链，然后按照他们在责任链上的顺序一个一个的找出到底该谁来负责处理
+
+* **Handler(处理者)**
+
+  Handler角色定义了处理请求的接口，Handler角色知道下一个处理者是谁，如果自己无法处理请求，它会将请求转给下一个处理者。
+
+* **ConcreteHandler(具体的处理者)**
+
+  ConcreteHandler角色是处理请求的具体角色
+
+* **Client(请求者)**
+  Client角色是想第一个ConcreteHandler角色返送请求的角色。
+
+#### 外观模式(Facade)
+
+使用Facade模式可以为互相关联在一起的错综复杂的类整理出高层接口，其中Facade角色可以让系统对外只有一个简单的接口。而且，Facade角色还会考虑到系统内部各个类之间的责任关系和依赖关系，按照正确的顺序调用各个类。
+
+* **Facade(窗口)**
+
+  Facade角色是代表构成系统的许多其他角色的简单窗口，Facade角色想系统外部提供高层接口，由PageMaker类扮演此角色
+
+* **Client(请求者)**
+
+  Client角色负责调用Facade角色(该角色不包含在Facade模式中)，有Main类扮演此角色
+
+* 构成系统的许多其他角色
+
+  这些角色各自完成自己的工作，他们并不知道Facade角色，Facade角色调用其他角色进行工作，但是其他角色不会调用Facade角色。
+
+#### 仲裁者模式(Mediator)
+
+当我们需要调整多个对象之间的关系时，就需要用到Mediator模式了。即不让各个对线之间互相通信，而是增加一个仲裁者的角色，让他们各自与仲裁者通信，然后将控制显示的逻辑处理交给仲裁者负责。
+
+* **Mediator(仲裁者)**
+
+  Mediator角色负责定义与Colleague角色进行通信和做出决定的接口。由Mediator接口扮演此角色
+
+* **ConcreteMediator(具体的仲裁者)**
+
+  ConcreteMediator角色负责实现Mediator角色的接口，负责实际做出决定。由LoginFragme类扮演此角色。
+
+* **Colleague(同事)**
+
+  Colleague角色负责定义与Mediator角色进行通信的接口。由Colleague接口扮演此角色。
+
+* **ConcreteColleague(具体的同事)**
+
+  ConcreteColleague角色负责实现Colleague角色的忌口，由ColleagueButton、ColleagueTextField、ColleagueCheckBox扮演此角色
+
+示例中ConcreteColleague角色可以复用，但ConcreteMediator角色很难复用。
+
+#### 观察者模式(Observer)
+
+发送状态变化通知
+
+* **Subject(观察对象)**
+
+  Subject角色表示观察对象。Subject角色定义了注册观察者和删除观察者的方法，此外，它还声明了获取现在状态的方法。
