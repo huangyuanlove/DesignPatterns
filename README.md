@@ -272,4 +272,47 @@ next方法返回当前元素，并指向下一个元素
 
 * **Subject(观察对象)**
 
-  Subject角色表示观察对象。Subject角色定义了注册观察者和删除观察者的方法，此外，它还声明了获取现在状态的方法。
+  Subject角色表示观察对象。Subject角色定义了注册观察者和删除观察者的方法，此外，它还声明了获取现在状态的方法。由NumberGenerator扮演此角色
+
+* **ConcreteSubject(具体的观察对象)**
+
+  ConcreteSubject角色表示具体被观察的对象，当自身状态发生变化后，它会通知所有已经注册的Observer角色。由RandomNumberGenerator扮演此角色
+
+* **Observer(观察者)**
+
+  Observer角色负责接收来自Subject角色的状态变化 的通知。为此它声明了update方法。有Observer接口扮演此角色。
+
+* **ConcreteObserver(具体的观察者)**
+
+  ConcreteObserver角色表示具体的Observer。当它的update方法被调用后，会去获取要观察的对象的最新状态。由DigitObserver和GraphObserver扮演此角色
+
+#### 备忘录模式(Memento)
+
+* **Originator(生成者)**
+
+  Originator角色会保存自己的最新状态时生成Memento角色。当把以前保存的Memento角色传递给Originator角色时，它会将自己恢复成该Memento角色时的状态。由Gamer类扮演此角色。
+
+* Memento(备忘录)
+
+  Memento角色会将Originator角色的内部信息整合在一起。在Memento角色中虽然保存了Originator角色的信息，但它不会向外部公开这些信息。
+
+* Caretaker(负责人)
+
+  当Caretaker角色想要保存当前的Originator角色的状态时，会通知Originator角色。Originator角色在接收到通知后会生成Memento角色的实例并将其返回给Caretaker角色。由于以后可能会用Memento实例来将Originator恢复至原来的状态。因此Caretaker角色会一直保存Memento实例。由Main扮演此角色
+
+#### 状态模式(State)
+
+用类来表示状态，通过切换类来方便的改变对象的状态。当需要增加新的状态时，如何修改代码这个问题也会很明确。
+
+* **State(状态)**
+
+  State角色表示状态，定义了根据不同状态进行不同处理的接口，该接口是那些处理内容依赖于状态的方法的集合。由State接口扮演此角色。
+
+* ConcreteState(具体状态)
+
+  ConcreteState角色表示各个具体的状态，它实现了State接口，由DayState和NightState扮演此角色。
+
+* Context(状况、前后关系、上下文)
+
+  Context角色持有表示当前状态的ConcreteState角色，此外它还定义了供外部调用者使用State模式的接口，由Context和SafeFrame类扮演此角色
+
