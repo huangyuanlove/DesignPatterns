@@ -351,3 +351,29 @@ next方法返回当前元素，并指向下一个元素
 * **Client(请求者)**
 
   使用Proxy模式的角色。由Main类扮演
+
+#### 命令模式(Command)
+
+* **Command(命令)**
+
+  Command 角色负责定义命令的接口，由Command接口扮演此角色
+
+* ConcreteCommand(具体命令)
+
+  ConcreteCommand角色负责实现在Command角色中定义的接口，由LightOnCommand和LightOffCommand扮演此角色
+
+* Receiver(接收者)
+
+  Receiver角色是Command角色执行命令时的对象，由Receiver扮演此角色
+
+* Client(请求者)
+
+  Client角色负责生成ConcreteCommand角色并分配Receiver角色。由Main类扮演此角色。
+
+* Invoker(发动者)
+
+  Invoker角色是开始执行命令的角色，他会调用在Command角色中定义的接口。由Invoker类扮演此角色
+
+#### 解释器模式(Interperter)
+
+给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。
