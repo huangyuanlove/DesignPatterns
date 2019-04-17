@@ -316,3 +316,38 @@ next方法返回当前元素，并指向下一个元素
 
   Context角色持有表示当前状态的ConcreteState角色，此外它还定义了供外部调用者使用State模式的接口，由Context和SafeFrame类扮演此角色
 
+#### 享元模式(Flyweight)
+
+**通过尽量共享实例来避免new出实例**，但是如果要改变被共享的对象，就会对多个地方产生影响。
+
+* **Flyweight(轻量级)**
+
+  按照通常方式编写程序会导致程序变重，所以如果能共享实例会比较好。而Flyweight角色表示的就是那些实例会被共享的类。由ConcreteFlyweight扮演此角色
+
+* **FlyweightFactoty(轻量级工厂)**
+
+  FlyweightFactory角色是生成Flyweight角色的工厂。在工厂中生成Flyweight角色可以实现共享实例。由FlyweightFactory扮演此角色
+
+* **Client(请求者)**
+
+  Client角色使用FlyweightFactory角色来生成Flyweight角色。由Main类扮演此角色。
+
+#### 代理模式(Proxy)
+
+**只在必要时生成实例**
+
+* **Subject(主体)**
+
+  Subject角色定义了使用Proxy角色和RealSubject角色之间具有一致性的接口。由于存在Subject角色，所以Client角色不必在意它所使用的究竟是Proxy角色还是RealSubject角色。由Printable接口扮演此角色。
+
+* **Proxy(代理人)**
+
+  Proxy角色会尽量处理来自Client角色的请求。只有当自己不能处理时，它才会将工作交给RealSubject角色。Proxy角色只有在必要时才会生成RealSubject角色。Proxy角色实现了在Subject角色中定义的接口。由PrinterProxy类扮演此角色。
+
+* **RealSubject(实际的主体)**
+
+  "本人"RealSubject角色会在"代理人"Proxy角色无法胜任工作时出场。它与Proxy角色一样。也实现了Subject角色中定义的接口。由Printer类扮演此角色。
+
+* **Client(请求者)**
+
+  使用Proxy模式的角色。由Main类扮演
